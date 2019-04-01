@@ -15,15 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Languange definition - de
+ * Languange definition - en
  * 
- * @package    filter_notes
+ * @package    filter_tafel
  * @copyright  2018 Franziska Hübler, ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['filtername'] = 'mebis-Notes Filter';
-$string['pluginname'] = 'mebis-Notes Filter';
-$string['server_name'] = 'Servernamen';
-$string['server_name_desc'] = 'Servernamen von mebis-Notes geeignet für regulären Ausdruck OR, z. B. mebis.bayern.de';
+$string['filtername'] = 'mebis-Tafel Filter';
+$string['pluginname'] = 'mbs Tafel Filter';
+$string['server_name'] = 'Server Name';
+$string['server_name_desc'] = 'Server Name for mebis-Tafel for regex OR, e. g. mebis.bayern.de';
 

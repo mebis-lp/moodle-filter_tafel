@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Settings for filter_notes.
+ * Settings for filter_tafel.
  *
- * @package    filter_notes
+ * @package    filter_tafel
  * @copyright  2018 Franziska Hübler, ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,7 +25,7 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
     
-    $settings->add(new admin_setting_configtext('filter_notes/server_name',
-        get_string('server_name', 'filter_notes'), get_string('server_name_desc', 'filter_notes'), 'mebis.bayern.de', PARAM_TEXT));
+    $settings->add(new admin_setting_configtext('filter_tafel/server_name',
+        get_string('server_name', 'filter_tafel'), get_string('server_name_desc', 'filter_tafel'), 'tafel.mebis.bayern.de', PARAM_TEXT));
 
 }

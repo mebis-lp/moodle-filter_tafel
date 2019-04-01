@@ -17,15 +17,15 @@
 /**
  * Version details.
  *
- * @package    filter_notes
+ * @package    filter_tafel
  * @copyright  2018 Franziska Hübler, ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2018052301;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2019040100;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2016052301;        // Requires this Moodle version
-$plugin->component = 'filter_notes';    // Full name of the plugin (used for diagnostics)
+$plugin->component = 'filter_tafel';    // Full name of the plugin (used for diagnostics)
 $plugin->maturity  = MATURITY_ALPHA;
 $plugin->release   = '3.5';

@@ -17,25 +17,32 @@
 /**
  * Filter class.
  *
- * @package    filter_notes
+ * @package    filter_tafel
  * @copyright  2018 Franziska Hübler, ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
 
-class filter_notes extends moodle_text_filter {
+/**
+ * Filter class for mebis-Tafel links.
+ *
+ * @package    filter_tafel
+ * @copyright  2018 Franziska Hübler, ISB Bayern
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class filter_tafel extends moodle_text_filter {
 
     /**
-     * Filter the text and replace the links to notes with an
+     * Filter the text and replace the links to mebis-Tafel with an
      * suitable iframe.
      *
      * Please note that we replace links NOT urls. If it should be possible to
      * convert a url, you have to filter the text with filter_urltolink before
      * applying this filter.
      *
-     * @param string $text
-     * @param array $options
-     * @return string
+     * @param string $text some HTML content
+     * @param array $options options passed to the filters
+     * @return string the HTML content after the filtering has been applied
      */
     public function filter($text, array $options = array()) {
         
@@ -48,24 +55,25 @@ class filter_notes extends moodle_text_filter {
             return $text;
         }
 
-        $serverstring = get_config('filter_notes', 'server_name');
+        $serverstring = get_config('filter_tafel', 'server_name');
         
-        $regex = "%<a[^>]?href=\"((http|https)://notes.($serverstring)/notes/.*?)\".*?</a>%is";
-        $newtext = preg_replace_callback($regex, [$this, 'filter_notes_callback'], $text);
+        $regex = "%<a[^>]?href=\"((http|https)://($serverstring)/tafel/.*?)\".*?</a>%is";
+        $newtext = preg_replace_callback($regex, [$this, 'filter_tafel_callback'], $text);
 
         return $newtext;
     }
     
     /**
-     * Embed notes item in a iframe.
+     * Embed mebis-Tafel item in a iframe.
      *
      * @param array $match
+     * @return string HTML fragment
      */
-    protected function filter_notes_callback($match) {
+    protected function filter_tafel_callback($match) {
 
         $link = $match[1];
    
-        $pos = strrpos($link, 'notes');
+        $pos = strrpos($link, 'tafel');
         
         if ($pos === false) { 
             // Wrong link.
@@ -75,7 +83,7 @@ class filter_notes extends moodle_text_filter {
         $link = substr_replace($link, 'frame', $pos, 5);
 
         $iframeattributes = [
-            'class' => 'notes-frame embed-responsive-item',
+            'class' => 'mebis-tafel-frame embed-responsive-item',
             'src' => $link,
             'allowfullscreen' => 'allowfullscreen'
         ];

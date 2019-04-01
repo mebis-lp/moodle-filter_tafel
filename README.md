@@ -1,3 +1,3 @@
-# filter-notes
+# filter_tafel
 
-Filters the text and replaces links to notes with an suitable iframe.
+Filters the text and replaces links to mebis-Tafel with an suitable iframe.
