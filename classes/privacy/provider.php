@@ -15,16 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Languange definition - de
+ * Privacy Subsystem implementation for filter_tafel.
  *
  * @package    filter_tafel
- * @copyright  2018 Franziska Hübler, ISB Bayern
+ * @copyright  2021 Thomas Ludwig, ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['filtername'] = 'mebis-Tafel Filter';
-$string['pluginname'] = 'mebis-Tafel Filter';
-$string['privacy:metadata'] = 'Der Filter mebis-Tafel speichert keine personenbezogenen Daten.';
-$string['server_name'] = 'Servernamen';
-$string['server_name_desc'] = 'Servernamen von mebis-Tafel geeignet für regulären Ausdruck OR, z. B. mebis.bayern.de';
+namespace filter_tafel\privacy;
 
+defined('MOODLE_INTERNAL') || die();
+
+/**
+ * Privacy Subsystem for filter_tafel implementing null_provider.
+ *
+ * @copyright  2021 Thomas Ludwig, ISB Bayern
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}

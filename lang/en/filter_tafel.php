@@ -16,7 +16,7 @@
 
 /**
  * Languange definition - en
- * 
+ *
  * @package    filter_tafel
  * @copyright  2018 Franziska Hübler, ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -24,6 +24,7 @@
 
 $string['filtername'] = 'mebis-Tafel Filter';
 $string['pluginname'] = 'mbs Tafel Filter';
+$string['privacy:metadata'] = 'The filter mebis-Tafel does not store any personal data.';
 $string['server_name'] = 'Server Name';
 $string['server_name_desc'] = 'Server Name for mebis-Tafel for regex OR, e. g. mebis.bayern.de';
 
