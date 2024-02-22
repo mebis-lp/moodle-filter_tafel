@@ -21,7 +21,6 @@
  * @copyright  2018 Franziska Hübler, ISB Bayern
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Filter class for mebis-Tafel links.
@@ -44,25 +43,25 @@ class filter_tafel extends moodle_text_filter {
      * @param array $options options passed to the filters
      * @return string the HTML content after the filtering has been applied
      */
-    public function filter($text, array $options = array()) {
-        
-        if (!is_string($text) or empty($text)) {
+    public function filter($text, array $options = []) {
+
+        if (!is_string($text) || empty($text)) {
             return $text;
         }
-        
+
         if (stripos($text, '</a>') === false) {
             // Performance shortcut - if not </a> tag, nothing can match.
             return $text;
         }
 
         $serverstring = get_config('filter_tafel', 'server_name');
-        
+
         $regex = "%<a[^>]?href=\"((http|https)://($serverstring)/tafel/.*?)\".*?</a>%is";
         $newtext = preg_replace_callback($regex, [$this, 'filter_tafel_callback'], $text);
 
         return $newtext;
     }
-    
+
     /**
      * Embed mebis-Tafel item in a iframe.
      *
@@ -72,24 +71,24 @@ class filter_tafel extends moodle_text_filter {
     protected function filter_tafel_callback($match) {
 
         $link = $match[1];
-   
+
         $pos = strrpos($link, 'tafel');
-        
-        if ($pos === false) { 
+
+        if ($pos === false) {
             // Wrong link.
             return $match[0];
         }
-        
+
         $link = substr_replace($link, 'frame', $pos, 5);
 
         $iframeattributes = [
             'class' => 'mebis-tafel-frame embed-responsive-item',
             'src' => $link,
-            'allowfullscreen' => 'allowfullscreen'
+            'allowfullscreen' => 'allowfullscreen',
         ];
 
         $out = html_writer::tag('iframe', '', $iframeattributes);
         return html_writer::tag('div', $out, ['class' => 'embed-responsive embed-responsive-4by3']);
     }
-    
+
 }
