@@ -24,8 +24,6 @@
 
 namespace filter_tafel\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Privacy Subsystem for filter_tafel implementing null_provider.
  *

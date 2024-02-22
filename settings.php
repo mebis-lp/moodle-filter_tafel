@@ -24,8 +24,9 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    
+
     $settings->add(new admin_setting_configtext('filter_tafel/server_name',
-        get_string('server_name', 'filter_tafel'), get_string('server_name_desc', 'filter_tafel'), 'tafel.mebis.bayern.de', PARAM_TEXT));
+        get_string('server_name', 'filter_tafel'),
+        get_string('server_name_desc', 'filter_tafel'), 'tafel.mebis.bayern.de', PARAM_TEXT));
 
 }
